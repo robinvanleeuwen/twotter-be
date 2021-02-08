@@ -1,0 +1,2 @@
+[global.databases]
+twotter = { url = "postgres://rvl:rvl@localhost/twotter", pool_size = 10 }
