@@ -1,11 +1,21 @@
-use super::schema::{twoot};
+use super::schema::{account, twoot};
+use diesel::Queryable;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use diesel::{Queryable};
 
 #[derive(Serialize, Queryable, Debug, Deserialize)]
 pub(crate) struct Account {
     pub id: i32,
+    pub username: String,
+    pub first_name: String,
+    pub last_name: String,
+    pub email: String,
+    pub is_admin: bool,
+}
+
+#[derive(Serialize, Insertable, Deserialize)]
+#[table_name = "account"]
+pub(crate) struct NewAccount {
     pub username: String,
     pub first_name: String,
     pub last_name: String,
@@ -47,4 +57,3 @@ pub(crate) struct TwootsPerUsername {
     pub username: String,
     pub twoot_ids: Vec<HashMap<i32, String>>,
 }
-
